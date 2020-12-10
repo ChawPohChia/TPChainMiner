@@ -2,7 +2,8 @@ from hashlib import sha256
 
 class Mining:
     # For miner program will only take in blockHash input.
-    def __init__(self, blockString, difficulty):
+    def __init__(self, blockString, difficulty, index):
+        self.blockIndex=index
         self.difficulty=difficulty
         self.blockString = blockString
         self.nonce = 0
@@ -11,6 +12,9 @@ class Mining:
 
     def mine(self):
         print("Mining is started...")
+        print("Difficuly: " + str(self.difficulty))
+        print("Block index: "+str(self.blockIndex))
+        print("Blockstring: " + self.blockString)
         blockHash = sha256((self.blockString + str(self.nonce)).encode()).hexdigest()
         while not blockHash.startswith('0' * self.difficulty):
             self.nonce += 1
@@ -21,8 +25,4 @@ class Mining:
 
     def verifyBlockHash(self):
         blockHash = sha256((self.blockString + str(self.nonce)).encode()).hexdigest()
-        if (blockHash.startswith('0' * self.difficulty)):
-            print("Block is verified! Block was mined successfull with nonce: " + str(self.nonce))
-        else:
-            print("Block nonce: " + str(self.nonce) + " is INCORRECT for this block, please try to mine again")
         return (blockHash.startswith('0' * self.difficulty))
