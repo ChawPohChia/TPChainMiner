@@ -1,10 +1,4 @@
 
 __pycache__/
 
-.idea/misc.xml
-
-.idea/modules.xml
-
-.idea/TPChainMiner.iml
-
-.idea/vcs.xml
+.idea/*
