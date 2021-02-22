@@ -14,10 +14,9 @@ def clicked():
     if (len(miningDict) !=0):
         mining= Mining(blockString=miningDict["Blockstring"], difficulty=miningDict["Difficulty"], index=miningDict["Index"])
     else:
-       #print("There is no mining job available")
        printMessage("There is no mining job available")
        return
-       #quit()
+
     mining.mine()
     blockHashIsVerified=mining.verifyBlockHash()
     if (blockHashIsVerified):
